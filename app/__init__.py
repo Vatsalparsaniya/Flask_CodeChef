@@ -17,12 +17,20 @@ mysql = MySQL(app)
 def index():
     cur = mysql.connection.cursor()
     # cur.execute("CREATE TABLE authorization(USER int(30),EMAIL varchar(35),PASSWORD varchar(30));")
-    cur.execute("INSERT INTO sql12308164.authorization VALUES (\"Darshit\",\"Darshit@gmail.com\",\"12345678\");")
+    # cur.execute("INSERT INTO sql12308164.authorization VALUES (\"Darshit\",\"Darshit@gmail.com\",\"12345678\");")
     cur.execute("SELECT * FROM sql12308164.authorization;")
     rv = cur.fetchall()
     mysql.connection.commit()
     cur.close()
     return render_template('Index.html',DATA=rv)
+
+@app.route('/login')
+def login():
+    return render_template('Login.html')
+
+@app.route('/signup')
+def signup():
+    return render_template('Signup.html')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=1234)
