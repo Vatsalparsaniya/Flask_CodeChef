@@ -90,9 +90,9 @@ body {
   <div class="header-right">
     <a href="/#contact">Contact us</a>
     <a href="/#demo">Project Demo</a>
-    <a class="active"  href="/signup_page">Signup</a>
+    <a class="active"  href="">{{ uname }}</a>
     <a> </a>
-    <a class="active" href="/login_page">Login</a>
+    <a class="active" href="/">Logout</a>
   </div>
 </div>
 
@@ -100,7 +100,6 @@ body {
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
       {% for category,message in messages %}
-
         <div class="alert">
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
             <strong>{{category}} :</strong> {{ message }}
