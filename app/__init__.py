@@ -1,5 +1,9 @@
 from flask_mysqldb import MySQL
 from flask import Flask,render_template,url_for,request,flash,redirect
+from urllib.request import Request, urlopen
+import urllib.request
+import requests
+from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 app.config.update(
@@ -54,8 +58,6 @@ def login_check():
             flash("Wrong!! Email or Password")
             return redirect(url_for("login"))
 
-
-
 @app.route('/signup_check/', methods=['POST'])
 def signup_check():
     if request.method == "POST":
@@ -91,6 +93,22 @@ def signup_check():
 def Codechef_Credentials():
     return render_template('Codechef_credentials.html')
 
+@app.route('/check_contest_detail',methods=['POST'])
+def check_details():
+    if request.method == 'POST':
+        uname = request.form['username']
+        contest_name = request.form['content']
+        User_profile_url  = "https://www.codechef.com/users/{}".format(uname)
+        contest_url = "https://www.codechef.com/{}".format(contest_name)
+        User_page = requests.get(User_profile_url)
+        contest_page = request.get(contest_url)
+        if str(User_page) == "<Response [404]>" and str(contest_page) == "<Response [404]>":
+            flash("enter valid user name or contest code")
+            return render_template("Codechef_credentials.html")
+        else:
+            flash("Successfully fatched data")
+            return render_template("contest_details.html")
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=1234)
-    
+        
