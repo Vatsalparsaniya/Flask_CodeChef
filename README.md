@@ -4,7 +4,7 @@
 
 ### this website helps to fetch all Problem statment of any past contest and subbmit solution of any specific user.
 
-![check this video](https://youtu.be/qNh1ITZMs6M)
+[check this video](https://youtu.be/qNh1ITZMs6M)
 
 ## screenshot
 
