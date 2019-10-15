@@ -1,0 +1,33 @@
+{% extends "Header2.html" %}
+{% block title %}Sign UP{% endblock %}
+{% block content %}
+<html>
+    <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <style>
+                .registerbtn {
+                background-color: #4CAF50;
+                color: white;
+                padding: 16px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+                opacity: 0.9;
+                }
+
+                .registerbtn:hover {
+                opacity: 1;
+                }
+            </style>
+    </head>
+    <body>
+            
+                    <h3 style="white-space: pre-line;">{{ problem_statment }}</h3>
+            
+            <form action="/solution_table/{{ contest_name }}/{{ uname }}/{{ code }}/" method="POST">
+                <button type="submit" class="registerbtn">Go to Solution </button>
+            </form>
+    </body>
+</html>
+{% endblock %}

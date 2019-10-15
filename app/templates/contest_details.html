@@ -1,0 +1,107 @@
+{% extends "Header2.html" %}
+{% block title %}Sign UP{% endblock %}
+{% block content %}
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f1f1f1;
+            }
+
+            * {
+            box-sizing: border-box;
+            }
+
+            .container {
+            padding: 20px;
+            background-color: white;
+            }
+
+            input[type=text], input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+            }
+
+            input[type=text]:focus, input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+            }
+
+
+            hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+            }
+
+            .registerbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+            }
+
+            .registerbtn:hover {
+            opacity: 1;
+            }
+
+            a {
+            color: dodgerblue;
+            }
+
+            .signin {
+            background-color: #f1f1f1;
+            text-align: center;
+            }
+
+            table, td, th {  
+            border: 1px solid #ddd;
+            text-align: left;
+            }
+
+            table {
+            border-collapse: collapse;
+            width: 100%;
+            }
+
+            th, td {
+            padding: 5px;
+            }
+        </style>
+    </head>
+    <body>
+            <div class="container">
+                <h2>Contest Details</h2>
+            <div style="overflow-x:auto;">
+                <table>
+                    {% for row in Data: %}
+                    <tr>
+                    {% for value in row:%}
+                    <th>{{ value }}</th>
+                    {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>      
+            <form action="/Code_details/{{ contest_name }}/{{ uname }}/" method="POST">
+                <br>
+                <h2>Enter Code Details</h2>
+                <hr>
+                <label for="email"><b>Question Code</b></label>
+                <input type="text" placeholder="Question Code" name="code" required>
+                <hr>
+                <button type="submit" class="registerbtn">Next</button>
+              </form>
+            </div> 
+    </body>
+</html>
+{% endblock %}
