@@ -5,6 +5,7 @@ import urllib.request
 import requests
 from bs4 import BeautifulSoup
 import re
+import time
 
 app = Flask(__name__)
 app.config.update(
@@ -156,7 +157,7 @@ def Code_details(uname,contest):
 def solution_table_function(contest_name,uname,code):
     Sloution_Status_url = "https://www.codechef.com/"+contest_name+"/status/"+code+","+uname
     page_content = requests.get(Sloution_Status_url)
-
+    time.sleep(2)
     page = BeautifulSoup(page_content.content,'html.parser')
     ID = page.findAll('td',attrs={'width':'60'})
     SID = []
